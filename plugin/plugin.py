@@ -162,7 +162,7 @@ class GetPage2(Thread):
 		try:
 			page = urllib2.urlopen(request, timeout=5).read()
 
-		except urllib2.URLError, err:
+		except urllib2.URLError as err:
 			error = "Error: "
 			if hasattr(err, "code"):
 				error += str(err.code)
