@@ -9,7 +9,7 @@
 # version.
 #===============================================================================
 
-from __init__ import _
+from Plugins.Extensions.OscamStatus.__init__ import _
 from Plugins.Plugin import PluginDescriptor
 
 from Screens.Screen import Screen
