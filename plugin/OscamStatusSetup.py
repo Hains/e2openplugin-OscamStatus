@@ -7,7 +7,7 @@
 # version.
 #===============================================================================
 
-from __init__ import _
+from Plugins.Extensions.OscamStatus.__init__ import _
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 

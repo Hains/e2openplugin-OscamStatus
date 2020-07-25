@@ -45,7 +45,7 @@ from os import path, listdir
 import re
 
 
-from OscamStatusSetup import oscamServer, readCFG, OscamServerEntriesListConfigScreen, \
+from Plugins.Extensions.OscamStatus.OscamStatusSetup import oscamServer, readCFG, OscamServerEntriesListConfigScreen, \
                              globalsConfigScreen, LASTSERVER, XOFFSET, EXTMENU, USEECM,\
                              dlg_xh, USEPICONS
 
