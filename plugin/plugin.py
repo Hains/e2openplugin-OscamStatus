@@ -678,8 +678,8 @@ class DownloadXMLScreen(Screen):
 				if self.timerOn:
 					self.timer.stop()
 				errmsg = str(node[0].firstChild.nodeValue.strip())
-				print("[OscamStatus] Oscam XML Error:", errmsg
-				info = self.session.open(MessageBox, _(errmsg), MessageBox.TYPE_ERROR))
+				print("[OscamStatus] Oscam XML Error:", errmsg)
+				info = self.session.open(MessageBox, _(errmsg), MessageBox.TYPE_ERROR)
 				info.setTitle(_("Oscam XML Error"))
 				self.close(1)
 			else:
