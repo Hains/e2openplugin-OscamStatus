@@ -659,7 +659,7 @@ class DownloadXMLScreen(Screen):
 			self.data = msg[1]
 			self.download = False
 			# if no xml comes back something is not right ..
-			if not "<?xml version=\"1.0\"" in self.data:
+			if not b"<?xml version=\"1.0\"" in self.data:
 				print("[OscamStatus] Oscam Download Error: no xml")
 				info = self.session.open(MessageBox, _("no xml"), MessageBox.TYPE_ERROR)
 				info.setTitle(_("Oscam Download Error"))
