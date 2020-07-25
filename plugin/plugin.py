@@ -465,7 +465,7 @@ class ClientDataScreen(Screen):
 
 	def __init__(self, session, type, oServer, data):
 		self.skin = ClientDataScreen.part1 + ClientDataScreen.ecmhistory + ClientDataScreen.part2
-		print self.skin
+		print(self.skin)
 		self.session = session
 		self.type = type
 		self.oServer = oServer
@@ -609,7 +609,7 @@ class DownloadXMLScreen(Screen):
 	def downloadXML(self):
 		self.setTitle(_("loading..."))
 		self.download = True
-		print "[OscamStatus] loading", self.url
+		print("[OscamStatus] loading", self.url)
 		self.getIndex()
 		# Message Queue initialisation...
 		getPage2.MessagePump.recv_msg.get().append(self.gotThreadMsg)
@@ -619,7 +619,7 @@ class DownloadXMLScreen(Screen):
 		except RuntimeError:
 			self.download = False
 			getPage2.MessagePump.recv_msg.get().remove(self.gotThreadMsg)
-			print "[OscamStatus] Thread already running..."
+			print("[OscamStatus] Thread already running...")
 
 	def sendNewPart(self, part):
 		self.timer.stop()
@@ -647,7 +647,7 @@ class DownloadXMLScreen(Screen):
 			errStr = str(msg[1])
 			if self.timerOn:
 				self.timer.stop()
-			print "[OscamStatus]", errStr
+			print("[OscamStatus]", errStr)
 			info = self.session.open(MessageBox, errStr, MessageBox.TYPE_ERROR)
 			info.setTitle(_("Oscam Status"))
 			self.close(1)
@@ -655,13 +655,13 @@ class DownloadXMLScreen(Screen):
 		elif msg[0] == THREAD_FINISHED:
 			getPage2.MessagePump.recv_msg.get().remove(self.gotThreadMsg)
 			self.download = False
-			print "[OscamStatus] Download finished"
+			print("[OscamStatus] Download finished")
 
 			self.data = msg[1]
 			self.download = False
 			# if no xml comes back something is not right ..
 			if not "<?xml version=\"1.0\"" in self.data:
-				print "[OscamStatus] Oscam Download Error: no xml"
+				print("[OscamStatus] Oscam Download Error: no xml")
 				info = self.session.open(MessageBox, _("no xml"), MessageBox.TYPE_ERROR)
 				info.setTitle(_("Oscam Download Error"))
 				self.close(1)
@@ -678,8 +678,8 @@ class DownloadXMLScreen(Screen):
 				if self.timerOn:
 					self.timer.stop()
 				errmsg = str(node[0].firstChild.nodeValue.strip())
-				print "[OscamStatus] Oscam XML Error:", errmsg
-				info = self.session.open(MessageBox, _(errmsg), MessageBox.TYPE_ERROR)
+				print("[OscamStatus] Oscam XML Error:", errmsg
+				info = self.session.open(MessageBox, _(errmsg), MessageBox.TYPE_ERROR))
 				info.setTitle(_("Oscam XML Error"))
 				self.close(1)
 			else:
