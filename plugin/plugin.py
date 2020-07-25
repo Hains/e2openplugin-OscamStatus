@@ -39,7 +39,7 @@ except:
 
 from threading import Thread, Lock
 import xml.dom.minidom
-import urllib2
+import urllib
 import ssl
 from os import path, listdir
 import re
@@ -147,22 +147,21 @@ class GetPage2(Thread):
 		self.__running = True
 		self.__cancel = False
 
-		PasswdMgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+		PasswdMgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()
 		PasswdMgr.add_password(None, self.url, self.username, self.password)
 
-		handler = urllib2.HTTPDigestAuthHandler(PasswdMgr)
-		opener = urllib2.build_opener(urllib2.HTTPHandler, handler)
+		handler = urllib.request.HTTPDigestAuthHandler(PasswdMgr)
+		opener = urllib.request.build_opener(urllib.request.HTTPHandler, handler)
 
-		urllib2.install_opener(opener)
-		request = urllib2.Request(self.url)
+		urllib.request.install_opener(opener)
+		request = urllib.request.Request(self.url)
 
 		self.__messages.push((THREAD_WORKING, "Download Thread is running"))
 		mp.send(0)
 
 		try:
-			page = urllib2.urlopen(request, timeout=5).read()
-
-		except urllib2.URLError as err:
+			page = urllib.request.urlopen(request, timeout=5).read()
+		except urllib.error.URLError as err:
 			error = "Error: "
 			if hasattr(err, "code"):
 				error += str(err.code)
