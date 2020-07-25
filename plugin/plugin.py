@@ -76,7 +76,7 @@ def getPicon(channelname):
 # Converts past seconds into days, hours, minutes and seconds ...
 def elapsedTime(s, fmt, hasDays=False):
 	try:
-		secs = long(s)
+		secs = int(s)
 		if hasDays:
 			days, secs = divmod(secs, 86400)
 		hours, secs = divmod(secs, 3600)
